@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI Document Analyzer</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <div class="brand-mark">AD</div>
+      <div><p class="eyebrow">DOCUMENT INTELLIGENCE</p><h1>AI Document Analyzer</h1></div>
+      <span class="status" id="apiStatus">Checking API…</span>
+    </header>
+
+    <section class="intro">
+      <p class="eyebrow">YOUR DOCUMENT, UNDERSTOOD</p>
+      <h2>Turn long documents into<br><span>clear insights.</span></h2>
+      <p class="lead">Upload a PDF or TXT file and let AI create a concise summary you can revisit anytime.</p>
+    </section>
+
+    <section class="workspace">
+      <div class="panel upload-panel">
+        <div class="panel-heading"><div><p class="eyebrow">01 / UPLOAD</p><h3>Choose a document</h3></div><span class="file-icon">↥</span></div>
+        <label class="dropzone" id="dropzone" for="fileInput">
+          <span class="upload-icon">↑</span>
+          <strong>Drop your file here</strong>
+          <span>or <u>browse files</u></span>
+          <small>PDF or TXT · Maximum 5 MB</small>
+          <input id="fileInput" type="file" accept=".pdf,.txt,application/pdf,text/plain">
+        </label>
+        <div class="selected-file" id="selectedFile">No file selected</div>
+        <button class="primary-btn" id="analyzeBtn" disabled>Analyze document <span>→</span></button>
+        <p class="helper">Your OpenAI API key stays on the backend. Do not upload confidential documents.</p>
+      </div>
+
+      <div class="panel result-panel">
+        <div class="panel-heading"><div><p class="eyebrow">02 / AI SUMMARY</p><h3>Document insights</h3></div><span class="spark">✳</span></div>
+        <div class="empty-state" id="emptyState"><div class="empty-art">✧</div><strong>Your summary will appear here</strong><p>Upload a document to extract its key ideas, important points, and conclusion.</p></div>
+        <div class="loading hidden" id="loading"><div class="spinner"></div><strong>Analyzing your document…</strong><p>Extracting text and generating a summary.</p></div>
+        <article class="summary hidden" id="summary">
+          <div class="summary-meta"><span id="summaryName"></span><span id="summaryDate"></span></div>
+          <div id="summaryText"></div>
+        </article>
+        <div class="error hidden" id="errorBox"></div>
+      </div>
+    </section>
+
+    <section class="history-section">
+      <div class="section-heading"><div><p class="eyebrow">03 / LIBRARY</p><h3>Recent documents</h3></div><button class="text-btn" id="refreshBtn">Refresh ↻</button></div>
+      <div class="history-list" id="historyList"><p class="muted">Loading documents…</p></div>
+    </section>
+    <footer>AI Document Analyzer <span>•</span> Local Docker environment</footer>
+  </main>
+  <script src="/script.js" defer></script>
+</body>
+</html>
